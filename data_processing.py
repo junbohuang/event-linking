@@ -1,4 +1,5 @@
 import json, pickle
+from pathlib import Path
 
 
 def GenerateBlinkData(infile_path, outfile_path):
@@ -53,6 +54,9 @@ def GenerateBlinkData(infile_path, outfile_path):
 			query_id += 1
 
 	print(query_id)
+
+	if not Path("out/").exists():
+		Path("out/").mkdir()
 
 	with open(outfile_path, 'w') as outfile:
 		for entry in json_list:
